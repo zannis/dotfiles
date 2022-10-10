@@ -10,7 +10,7 @@ spacebar -m config padding_left         30
 spacebar -m config padding_right        30
 spacebar -m config spacing_left         25
 spacebar -m config spacing_right        15
-spacebar -m config text_font            "Iosevka Nerd Font:Bold:12.0"
+spacebar -m config text_font            "Avenir Next:Demi Bold:12.0"
 spacebar -m config icon_font            "Font Awesome 6 Free:Solid:12.0"
 spacebar -m config background_color     0xff000000
 spacebar -m config foreground_color     0xffa8a8a8

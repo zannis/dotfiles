@@ -11,7 +11,7 @@ else
 endif
 
 let g:vim_bootstrap_langs = "javascript,rust,typescript"
-let g:vim_bootstrap_editor = "neovim"				" nvim or vim
+let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 let g:vim_bootstrap_theme = "vadelma"
 let g:vim_bootstrap_frams = ""
 
@@ -197,7 +197,7 @@ else
 
   " IndentLine
   let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
+  let g:indentLine_concealcursor = ''
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 

@@ -164,4 +164,4 @@ alt - t : yabai -m window --toggle float;\
 #           yabai -m window --toggle pip
 
 # app specifics
-ctrl - return : open -na /Applications/Alacritty.app 
+ctrl - return : open -na /Applications/Kitty.app 
