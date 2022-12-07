@@ -56,7 +56,6 @@ yabai -m space 6 --label chat
 yabai -m space 7 --label calendar
 
 # app specifics
-yabai -m rule --add app="^ueli" layer=above manage=off
 yabai -m rule --add app="^Calculator" layer=above manage=off
 yabai -m rule --add app="^zoom.us" layer=above manage=off
 yabai -m rule --add app="^Finder$" manage=off
@@ -76,8 +75,6 @@ yabai -m signal --add \
     | jq -re ".floating == 0" \
     && yabai -m window $YABAI_WINDOW_ID --toggle float
   '
-yabai -m rule --add app="^Docker Desktop$" manage=off
-yabai -m rule --add app="^VLC" manage=off
 
 
 # signals
