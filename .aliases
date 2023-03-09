@@ -1,0 +1,10 @@
+alias vim=nvim
+alias h2t='xxd -r -p'
+alias snf='ssh user@snf-882956.vm.okeanos.grnet.gr'
+alias sl='ls'
+alias htop='btm -b'
+alias cat='bat'
+alias grep='rg -i'
+alias icat='kitty +kitten icat'
+alias bump='brew update && brew upgrade && brew upgrade --cask --greedy'
+
