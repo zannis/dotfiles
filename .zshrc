@@ -115,10 +115,10 @@ compctl -K _gh gh
 #fix gpg signing
 export GPG_TTY=$(tty)
 
-export PATH="$PATH:/Users/zannis/.foundry/bin"
+export PATH="$PATH:$HOME/.foundry/bin"
 
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="/Users/zannis/.docker/bin:$PATH"
+export PATH="$HOME/.docker/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 autoload -Uz compinit && compinit
