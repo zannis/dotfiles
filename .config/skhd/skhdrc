@@ -115,7 +115,7 @@ shift + cmd - z : yabai -m space --create && \
 # traverse spaces
 #cmd - tab : osascript -e 'tell application "System Events" to key code 124 using control down'
 #shift + cmd - tab : osascript -e 'tell application "System Events" to key code 123 using control down'
-cmd - tab : yabai -m space --focus next || yabai -m space --focus 1
+cmd - tab : yabai -m space --focus next || yabai -m space --focus first
 shift + cmd - tab : yabai -m space --focus prev || yabai -m space --focus last
 
 
