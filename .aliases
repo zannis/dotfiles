@@ -7,4 +7,4 @@ alias cat='bat'
 alias grep='rg -i'
 alias icat='kitty +kitten icat'
 alias bump='brew update && brew upgrade && brew upgrade --cask --greedy'
-
+alias djifix='$HOME/dev/djifix/djifix'

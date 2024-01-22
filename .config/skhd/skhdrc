@@ -113,8 +113,19 @@ shift + cmd - z : yabai -m space --create && \
 # shift + rctrl + rcmd + ralt - tab : yabai -m space --focus recent
 
 # traverse spaces
-cmd - tab : osascript -e 'tell application "System Events" to key code 124 using control down'
-shift + cmd - tab : osascript -e 'tell application "System Events" to key code 123 using control down'
+#cmd - tab : osascript -e 'tell application "System Events" to key code 124 using control down'
+#shift + cmd - tab : osascript -e 'tell application "System Events" to key code 123 using control down'
+cmd - tab : yabai -m space --focus next || yabai -m space --focus 1
+shift + cmd - tab : yabai -m space --focus prev || yabai -m space --focus last
+
+
+# focus desktop
+cmd - 1 : yabai -m space --focus 1
+cmd - 2 : yabai -m space --focus 2
+cmd - 3 : yabai -m space --focus 3
+cmd - 4 : yabai -m space --focus 4
+cmd - 5 : yabai -m space --focus 5
+cmd - 6 : yabai -m space --focus 6
 
 # send window to desktop and follow focus
 shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
@@ -164,4 +175,4 @@ alt - t : yabai -m window --toggle float;\
 #           yabai -m window --toggle pip
 
 # app specifics
-ctrl - return : open -na /Applications/Kitty.app 
+cmd - return : open -na /Applications/Kitty.app 

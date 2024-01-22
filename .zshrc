@@ -8,7 +8,7 @@ export ZSH="/Users/zannis/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="apple"
+ZSH_THEME="zapple"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -64,13 +64,14 @@ ZSH_THEME="apple"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_DOTENV_FILE=.aliases
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git yarn brew macos colorize gh rust common-aliases docker docker-compose)
+plugins=(git yarn brew macos colorize gh rust common-aliases docker docker-compose dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,3 +124,11 @@ export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 autoload -Uz compinit && compinit
 
+
+# pnpm
+export PNPM_HOME="/Users/zannis/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
