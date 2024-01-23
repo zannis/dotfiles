@@ -1,6 +1,6 @@
 alias vim=nvim
 alias h2t='xxd -r -p'
-alias snf='ssh user@snf-882956.vm.okeanos.grnet.gr'
+alias snf='ssh -XC user@snf-882956.vm.okeanos.grnet.gr'
 alias sl='ls'
 alias htop='btm -b'
 alias cat='bat'
