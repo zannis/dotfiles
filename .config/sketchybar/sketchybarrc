@@ -102,6 +102,19 @@ sketchybar --add item clock right                              \
            --set wifi    script="$PLUGIN_DIR/wifi.sh"          \
                          background.padding_right=12           \
                          update_freq=60
+
+##### Keyboard layout plugin
+keyboard=(
+    icon.drawing=off
+    label.font="$FONT:Semibold:14.0"
+    script="$PLUGIN_DIR/keyboard.sh"
+)
+
+sketchybar --add item keyboard right        \
+           --set keyboard "${keyboard[@]}"  \
+           --add event keyboard_change "AppleSelectedInputSourcesChangedNotification" \
+           --subscribe keyboard keyboard_change
+
 ##### Finalizing Setup #####
 # The below command is only needed at the end of the initial configuration to
 # force all scripts to run the first time, it should never be run in an item script.
