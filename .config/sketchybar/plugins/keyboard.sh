@@ -7,6 +7,8 @@ LAYOUT="$(defaults read ~/Library/Preferences/com.apple.HIToolbox.plist AppleSel
 case "$LAYOUT" in
     "Dvorak") SHORT_LAYOUT="DV";;
     "\"U.S.\"") SHORT_LAYOUT="US";;
+    "ABC") SHORT_LAYOUT="🇺🇸";;
+    "Greek") SHORT_LAYOUT="🇬🇷";;
     *) SHORT_LAYOUT="한";;
 esac
 

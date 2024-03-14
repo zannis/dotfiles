@@ -84,6 +84,14 @@ sketchybar --add item space_separator left                         \
 # volume is registered. More info about the event system can be found here:
 # https://felixkratz.github.io/SketchyBar/config/events
 
+##### Keyboard layout plugin
+keyboard=(
+    icon.drawing=off
+#    label.font="$FONT:Semibold:14.0"
+    script="$PLUGIN_DIR/keyboard.sh"
+)
+
+
 sketchybar --add item clock right                              \
            --set clock   update_freq=10                        \
                          icon=                                \
@@ -101,19 +109,12 @@ sketchybar --add item clock right                              \
            --add item wifi right                               \
            --set wifi    script="$PLUGIN_DIR/wifi.sh"          \
                          background.padding_right=12           \
-                         update_freq=60
-
-##### Keyboard layout plugin
-keyboard=(
-    icon.drawing=off
-    label.font="$FONT:Semibold:14.0"
-    script="$PLUGIN_DIR/keyboard.sh"
-)
-
-sketchybar --add item keyboard right        \
-           --set keyboard "${keyboard[@]}"  \
+                         update_freq=60                        \
+           --add item keyboard right                           \
+           --set keyboard "${keyboard[@]}"                     \
            --add event keyboard_change "AppleSelectedInputSourcesChangedNotification" \
            --subscribe keyboard keyboard_change
+
 
 ##### Finalizing Setup #####
 # The below command is only needed at the end of the initial configuration to
