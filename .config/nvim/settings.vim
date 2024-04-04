@@ -6,3 +6,4 @@ let mapheader = "\\"
 
 set number
 
+set clipboard=unnamed
