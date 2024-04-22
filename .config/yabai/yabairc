@@ -48,7 +48,7 @@ yabai -m config right_padding                0
 yabai -m config window_gap                   0
 
 # app specifics
-yabai -m rule --add app="^Calculator" layer=above manage=off
+yabai -m rule --add app="^Calculator$" layer=above manage=off
 yabai -m rule --add app="^zoom.us" layer=above manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^System Information$" manage=off
