@@ -71,7 +71,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git yarn brew macos colorize gh rust common-aliases docker docker-compose dotenv)
+plugins=(git yarn brew macos colorize gh rust common-aliases docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -139,5 +139,8 @@ esac
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 
-# zsh
+# zsh completions
 eval "$(fzf --zsh)"
+
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
