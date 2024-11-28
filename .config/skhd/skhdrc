@@ -83,16 +83,16 @@ alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 
 # swap managed window
+#shift + alt - h : yabai -m window --warp west
+#shift + alt - j : yabai -m window --warp south
+#shift + alt - k : yabai -m window --warp north
+#shift + alt - l : yabai -m window --warp east
+
+# move managed window
 shift + alt - h : yabai -m window --warp west
 shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
-
-# move managed window
-#shift + cmd - h : yabai -m window --warp west
-#shift + cmd - j : yabai -m window --warp south
-#shift + cmd - k : yabai -m window --warp north
-#shift + cmd - l : yabai -m window --warp east
 
 # balance size of windows
 # shift + alt - 0 : yabai -m space --balance
@@ -176,3 +176,5 @@ alt - t : yabai -m window --toggle float;\
 
 # app specifics
 ctrl - return : open -na /Applications/Kitty.app 
+
+ctrl + shift - q : pkill -9 $(yabai -m query --windows --window | jq -r .app | tr '[:upper:]' '[:lower:]')
