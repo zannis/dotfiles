@@ -5,6 +5,9 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+# add variables
+source "$CONFIG_DIR/variables.sh"
+
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar, these are only some of the
 # options available. For all options see:
@@ -18,6 +21,16 @@ sketchybar --bar height=32        \
                  sticky=off       \
                  padding_left=10  \
                  padding_right=10 \
+                 shadow="$SHADOW" \
+                 position=top \
+                 sticky=on \
+                 padding_right=0 \
+                 padding_left=3 \
+                 corner_radius="$CORNER_RADIUS" \
+                 y_offset=5 \
+                 margin=5 \
+                 blur_radius=20 \
+                 notch_width=200 \
                  color=0x15ffffff
 
 ##### Changing Defaults #####
@@ -34,7 +47,9 @@ sketchybar --default icon.font="Hack Nerd Font:Bold:17.0"  \
                      label.padding_left=4                  \
                      label.padding_right=4                 \
                      icon.padding_left=4                   \
-                     icon.padding_right=4
+                     icon.padding_right=4                  \
+                     updates=when_shown                    \
+
 
 ##### Adding Mission Control Space Indicators #####
 # Now we add some mission control spaces:
@@ -72,6 +87,9 @@ sketchybar --add item space_separator left                         \
            --set front_app       script="$PLUGIN_DIR/front_app.sh" \
                                  icon.drawing=off                  \
            --subscribe front_app front_app_switched
+
+# Center (of notch)
+source "$PLUGIN_DIR/spotify.sh"
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
@@ -120,4 +138,5 @@ sketchybar --add item clock right                              \
 # The below command is only needed at the end of the initial configuration to
 # force all scripts to run the first time, it should never be run in an item script.
 
+sketchybar --hotload true
 sketchybar --update

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-SSID="$(ipconfig getsummary "$(networksetup -listallhardwareports | awk '/Wi-Fi|AirPort/{getline; print $NF}')" | grep '  SSID : ' | awk -F ': ' '{print $2}')"
+SSID="$(system_profiler SPAirPortDataType | awk '/Current Network/ {getline;$1=$1;print $0 | "tr -d ':'";exit}')"
 
 if [ "$SSID" = "" ]; then
   sketchybar --set $NAME label="Disconnected" icon=󱚼

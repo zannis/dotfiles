@@ -1,8 +1,15 @@
 alias vim=nvim
 alias snf='kitten ssh -XC user@snf-882956.vm.okeanos.grnet.gr'
 alias sl='ls'
+alias hh='htop'
 alias htop='btm -b'
 alias cat='bat'
 alias grep='rg -i'
 alias icat='kitty +kitten icat'
 alias bump='brew update && brew upgrade && brew upgrade --cask --greedy'
+alias bb='cd ~/dev/lens-backend/ && cargo run --bin broker'
+alias ww='cd ~/dev/lens-backend/ && cargo run --bin workers'
+alias ll='cd ~/dev/lens-backend/ && cargo run --bin lens-indexer'
+alias cw="cargo watch -c -q -x 'clippy --workspace --all-targets -- -D warnings'"
+alias claude="claude --add-dir ~/.cargo/registry/src/"
+alias εχιτ="exit"

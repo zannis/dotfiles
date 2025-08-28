@@ -60,7 +60,7 @@
 # Show memory values in the processes widget as values by default
 mem_as_value = true
 # Show tree mode by default in the processes widget.
-#tree = false
+tree = true
 # Shows an indicator in table widgets tracking where in the list you are.
 #show_table_scroll_position = false
 # Show processes as their commands by default in the process widget.
@@ -71,7 +71,7 @@ mem_as_value = true
 #network_use_bytes = false
 # Displays the network widget with a log scale.
 #network_use_log = false
-# Hides advanced options to stop a process on Unix-like systems.
+# Hides advanced options to sto a process on Unix-like systems.
 #disable_advanced_kill = false
 # Shows GPU(s) memory
 #enable_gpu = false
