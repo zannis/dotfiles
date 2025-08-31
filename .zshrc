@@ -70,6 +70,8 @@ refreshMetadata() {
     https://api.lens.xyz
 }
 
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
+
 # Aliases
 source ~/.aliases
-alias claude="/Users/zannis/.claude/local/claude"
