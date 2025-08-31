@@ -18,3 +18,8 @@
 1. "Which of my 12 specialists could help with this?"
 2. "Would a specialist do this better/faster than me?"
 3. "Should I break this into parts for different specialists?"
+
+## Core Principles
+- **KISS**: Keep It Simple - Simplicity over complexity
+- **DRY**: Don't Repeat Yourself - Code reuse first
+- **Security by Design**: Security-first approach
