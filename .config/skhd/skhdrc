@@ -178,3 +178,9 @@ alt - t : yabai -m window --toggle float;\
 ctrl - return : open -na /Applications/Kitty.app 
 
 ctrl + shift - q : pkill -9 $(yabai -m query --windows --window | jq -r .app | tr '[:upper:]' '[:lower:]')
+
+# focus dock
+cmd + alt - d : yabai -m display --focus 1; cliclick m:32,$(yabai -m query --displays --display 1 | jq '.frame.h / 2 | floor')
+
+
+
