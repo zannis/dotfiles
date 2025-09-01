@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Read(~/.claude/CLAUDE.md)",
-      "Read(~/.claude/settings.json)"
+      "Read(~/.claude/settings.json)",
+      "Bash(cargo check:*)",
+      "Bash(cargo build:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(find:*)",
+      "WebFetch(domain:docs.rs)"
     ],
     "deny": [
       "Read(./.env)",
