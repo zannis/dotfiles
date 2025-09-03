@@ -13,8 +13,8 @@
       "WebFetch(domain:raw.githubusercontent.com)"
     ],
     "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
       "Read(./secrets/**)"
     ]
   },
