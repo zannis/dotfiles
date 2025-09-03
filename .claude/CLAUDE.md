@@ -1,3 +1,4 @@
+# always pass the -q parameter in all cargo commands
 ## SUB-AGENT DELEGATION SYSTEM
 
 ** SMART DELEGATION: YOU HAVE MANY SPECIALIZED EMPLOYEES AVAILABLE! **
