@@ -37,7 +37,29 @@
         "hooks": [
           {
             "type": "command",
-            "command": "CMD=$(jq -r '.tool_input.command'); if echo \"$CMD\" | grep -qE '^cargo (check|clippy|test|build|c|t|b)'; then cargo fix --allow-dirty --allow-staged; elif echo \"$CMD\" | grep -qE '^cd .* && cargo (check|clippy|test|build|c|t|b)'; then DIR=$(echo \"$CMD\" | sed -E 's/^cd ([^ ]*) &&.*/\\1/'); cd \"$CLAUDE_PROJECT_DIR/$DIR\" && cargo fix --allow-dirty --allow-staged; fi"
+            "command": "CMD=$(jq -r '.tool_input.command'); if echo \"$CMD\" | grep -qE '^cargo (check|clippy|test|build|c|t|b)'; then cargo fix --allow-dirty --allow-staged; elif echo \"$CMD\" | grep -qE '^cd .* && cargo (check|clippy|test|build|c|t|b)'; then DIR=$(echo \"$CMD\" | sed -E 's/^cd ([^ ]*) &&.*/\\1/'); if [[ \"$DIR\" = /* ]]; then cd \"$DIR\"; else cd \"$CLAUDE_PROJECT_DIR/$DIR\"; fi && cargo fix --allow-dirty --allow-staged; fi"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "SESSION_ID=$(jq -r '.session_id // \"unknown\"'); TRANSCRIPT_PATH=$(jq -r '.transcript_path // \"\"'); NOTIFICATION_MSG=$(jq -r '.message // \"Permission or idle timeout\"'); TIMESTAMP=$(date '+%H:%M:%S'); CONTEXT=\"\"; if [ -n \"$TRANSCRIPT_PATH\" ] && [ -f \"$TRANSCRIPT_PATH\" ]; then CONTEXT=$(tail -n 10 \"$TRANSCRIPT_PATH\" | grep -E 'Human:' | tail -n 1 | sed 's/^[[:space:]]*Human:[[:space:]]*//' | head -c 150); fi; MESSAGE=\"⏸️ Claude needs attention at $TIMESTAMP\\nSession: ${SESSION_ID:0:8}\\nReason: $NOTIFICATION_MSG\\nLast user input: ${CONTEXT:-No recent input}\"; curl -s -d \"$MESSAGE\" -H \"Title: Claude Code - Waiting\" ntfy.sh/S86APsNDzs6PeHJ7"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "SESSION_ID=$(jq -r '.session_id // \"unknown\"'); TRANSCRIPT_PATH=$(jq -r '.transcript_path // \"\"'); TIMESTAMP=$(date '+%H:%M:%S'); LAST_MSG=\"\"; if [ -n \"$TRANSCRIPT_PATH\" ] && [ -f \"$TRANSCRIPT_PATH\" ]; then LAST_MSG=$(tail -n 20 \"$TRANSCRIPT_PATH\" | grep -E '(Human:|Assistant:)' | tail -n 2 | sed 's/^[[:space:]]*//' | tr '\\n' ' ' | head -c 200); fi; MESSAGE=\"🤖 Claude finished at $TIMESTAMP\\nSession: ${SESSION_ID:0:8}\\nLast context: ${LAST_MSG:-No recent messages}\"; curl -s -d \"$MESSAGE\" -H \"Title: Claude Code - Session Complete\" ntfy.sh/S86APsNDzs6PeHJ7"
           }
         ]
       }
