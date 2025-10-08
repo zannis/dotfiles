@@ -48,7 +48,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "SESSION_ID=$(jq -r '.session_id // \"unknown\"'); TRANSCRIPT_PATH=$(jq -r '.transcript_path // \"\"'); NOTIFICATION_MSG=$(jq -r '.message // \"Permission or idle timeout\"'); TIMESTAMP=$(date '+%H:%M:%S'); CONTEXT=\"\"; if [ -n \"$TRANSCRIPT_PATH\" ] && [ -f \"$TRANSCRIPT_PATH\" ]; then CONTEXT=$(tail -n 10 \"$TRANSCRIPT_PATH\" | grep -E 'Human:' | tail -n 1 | sed 's/^[[:space:]]*Human:[[:space:]]*//' | head -c 150); fi; MESSAGE=\"⏸️ Claude needs attention at $TIMESTAMP\\nSession: ${SESSION_ID:0:8}\\nReason: $NOTIFICATION_MSG\\nLast user input: ${CONTEXT:-No recent input}\"; curl -s -d \"$MESSAGE\" -H \"Title: Claude Code - Waiting\" ntfy.sh/S86APsNDzs6PeHJ7"
+            "command": "SESSION_ID=$(jq -r '.session_id // \"unknown\"'); TRANSCRIPT_PATH=$(jq -r '.transcript_path // \"\"'); NOTIFICATION_MSG=$(jq -r '.message // \"Permission or idle timeout\"'); TIMESTAMP=$(date '+%H:%M'); CONTEXT=\"\"; if [ -n \"$TRANSCRIPT_PATH\" ] && [ -f \"$TRANSCRIPT_PATH\" ]; then CONTEXT=$(tail -n 10 \"$TRANSCRIPT_PATH\" | grep -E 'Human:' | tail -n 1 | sed 's/^[[:space:]]*Human:[[:space:]]*//' | head -c 150); fi; MESSAGE=\"⏸️ Claude needs attention at $TIMESTAMP\\nSession: ${SESSION_ID:0:8}\\nReason: $NOTIFICATION_MSG\\nLast user input: ${CONTEXT:-No recent input}\"; curl -s -d \"$MESSAGE\" -H \"Title: Claude Code - Waiting\" ntfy.sh/S86APsNDzs6PeHJ7"
           }
         ]
       }
@@ -59,10 +59,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "SESSION_ID=$(jq -r '.session_id // \"unknown\"'); TRANSCRIPT_PATH=$(jq -r '.transcript_path // \"\"'); TIMESTAMP=$(date '+%H:%M:%S'); LAST_MSG=\"\"; if [ -n \"$TRANSCRIPT_PATH\" ] && [ -f \"$TRANSCRIPT_PATH\" ]; then LAST_MSG=$(tail -n 20 \"$TRANSCRIPT_PATH\" | grep -E '(Human:|Assistant:)' | tail -n 2 | sed 's/^[[:space:]]*//' | tr '\\n' ' ' | head -c 200); fi; MESSAGE=\"🤖 Claude finished at $TIMESTAMP\\nSession: ${SESSION_ID:0:8}\\nLast context: ${LAST_MSG:-No recent messages}\"; curl -s -d \"$MESSAGE\" -H \"Title: Claude Code - Session Complete\" ntfy.sh/S86APsNDzs6PeHJ7"
+            "command": "SESSION_ID=$(jq -r '.session_id // \"unknown\"'); TRANSCRIPT_PATH=$(jq -r '.transcript_path // \"\"'); TIMESTAMP=$(date '+%H:%M'); LAST_MSG=\"\"; if [ -n \"$TRANSCRIPT_PATH\" ] && [ -f \"$TRANSCRIPT_PATH\" ]; then LAST_MSG=$(tail -n 20 \"$TRANSCRIPT_PATH\" | grep -E '(Human:|Assistant:)' | tail -n 2 | sed 's/^[[:space:]]*//' | tr '\\n' ' ' | head -c 200); fi; MESSAGE=\"🤖 Claude finished at $TIMESTAMP\\nSession: ${SESSION_ID:0:8}\\nLast context: ${LAST_MSG:-No recent messages}\"; curl -s -d \"$MESSAGE\" -H \"Title: Claude Code - Finished\" ntfy.sh/S86APsNDzs6PeHJ7"
           }
         ]
       }
     ]
-  }
+  },
+  "alwaysThinkingEnabled": false
 }
