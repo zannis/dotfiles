@@ -1,1 +1,7 @@
-!.config
+/*
+!/.gitignore
+!/.aliases
+!/.claude/
+!/.config/
+!/.hushlogin
+!/.zshrc
