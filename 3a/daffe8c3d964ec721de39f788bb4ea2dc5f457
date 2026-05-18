@@ -1,0 +1,26 @@
+.config/nvim/lua/plugins/oxlint.lua
+  s_33c390c2d9812b::t_b90a999079c2e9 1-35
+.config/nvim/lua/plugins/persistence.lua
+  s_33c390c2d9812b::t_f7fdb957f982bc 1-20
+.aliases
+  s_33c390c2d9812b::t_cb44c267bd7127 13-16
+.config/nvim/lazyvim.json
+  s_33c390c2d9812b::t_f51783ec0ec2c7 11
+  s_33c390c2d9812b::t_36849737ee9088 3-10,12-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "3adaffe8c3d964ec721de39f788bb4ea2dc5f457",
+  "prompts": {},
+  "sessions": {
+    "s_33c390c2d9812b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "118c2e61-5910-41e5-a995-aae438c55efe",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "zannis <zannis@aave.com>"
+    }
+  }
+}
