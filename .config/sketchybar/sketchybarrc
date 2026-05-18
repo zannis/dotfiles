@@ -79,6 +79,7 @@ done
 
 sketchybar --add item space_separator left                         \
            --set space_separator icon=                            \
+                                 icon.color=$COMMENT               \
                                  padding_left=10                   \
                                  padding_right=10                  \
                                  label.drawing=off                 \
@@ -113,6 +114,7 @@ keyboard=(
 sketchybar --add item clock right                              \
            --set clock   update_freq=10                        \
                          icon=                                \
+                         icon.color=$BLUE                      \
                          script="$PLUGIN_DIR/clock.sh"         \
                                                                \
            --add item volume right                             \
@@ -124,6 +126,9 @@ sketchybar --add item clock right                              \
                          update_freq=120                       \
                                                                \
            --subscribe battery system_woke power_source_change \
+           --add item memory right                             \
+           --set memory  script="$PLUGIN_DIR/memory.sh"        \
+                         update_freq=5                         \
            --add item wifi right                               \
            --set wifi    script="$PLUGIN_DIR/wifi.sh"          \
                          background.padding_right=12           \

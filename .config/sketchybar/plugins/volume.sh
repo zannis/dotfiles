@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# The volume_change event supplies a $INFO variable in which the current volume
-# percentage is passed to the script.
+source "$CONFIG_DIR/variables.sh"
 
 if [ "$SENDER" = "volume_change" ]; then
   VOLUME=$INFO
@@ -16,5 +15,11 @@ if [ "$SENDER" = "volume_change" ]; then
     *) ICON="󰖁"
   esac
 
-  sketchybar --set $NAME icon="$ICON" label="$VOLUME%"
+  if [ "$VOLUME" = "0" ]; then
+    COLOR=$COMMENT
+  else
+    COLOR=$MAGENTA
+  fi
+
+  sketchybar --set $NAME icon="$ICON" icon.color=$COLOR label="$VOLUME%"
 fi

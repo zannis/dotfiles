@@ -20,13 +20,13 @@
     ]
   },
   "hooks": {
-    "SessionStart": [
+    "PostToolUse": [
       {
         "matcher": "*",
         "hooks": [
           {
             "type": "command",
-            "command": "cat ~/.claude/CLAUDE.md"
+            "command": "/Users/zannis/.git-ai/bin/git-ai checkpoint claude --hook-input stdin"
           }
         ]
       }
@@ -62,8 +62,39 @@
             "command": "SESSION_ID=$(jq -r '.session_id // \"unknown\"'); TRANSCRIPT_PATH=$(jq -r '.transcript_path // \"\"'); TIMESTAMP=$(date '+%H:%M'); LAST_MSG=\"\"; if [ -n \"$TRANSCRIPT_PATH\" ] && [ -f \"$TRANSCRIPT_PATH\" ]; then LAST_MSG=$(tail -n 20 \"$TRANSCRIPT_PATH\" | grep -E '(Human:|Assistant:)' | tail -n 2 | sed 's/^[[:space:]]*//' | tr '\\n' ' ' | head -c 200); fi; MESSAGE=\"🤖 Claude finished at $TIMESTAMP\\nSession: ${SESSION_ID:0:8}\\nLast context: ${LAST_MSG:-No recent messages}\"; curl -s -d \"$MESSAGE\" -H \"Title: Claude Code - Finished\" ntfy.sh/S86APsNDzs6PeHJ7"
           }
         ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/zannis/.git-ai/bin/git-ai checkpoint claude --hook-input stdin"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat ~/.claude/CLAUDE.md"
+          }
+        ]
       }
     ]
   },
-  "alwaysThinkingEnabled": false
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true,
+    "linear@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
+  "autoCompactEnabled": false,
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true
 }
