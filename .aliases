@@ -10,3 +10,7 @@ alias ww='cd ~/dev/lens-backend/ && cargo run --bin workers'
 alias ll='cd ~/dev/lens-backend/ && cargo run --bin lens-indexer'
 alias cw="cargo watch -c -q -x 'clippy --workspace --all-targets -- -D warnings'"
 alias εχιτ="exit"
+
+# common-aliases (oh-my-zsh) aliases `fd` to `find . -type d -name`, which shadows
+# the real fd. .aliases is sourced after oh-my-zsh, so unaliasing here wins.
+unalias fd 2>/dev/null
