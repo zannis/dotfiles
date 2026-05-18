@@ -1,0 +1,34 @@
+.config/sketchybar/plugins/memory.sh
+  s_50bdd24589e78d::t_c9c2066912b245 8-9,12-14,16
+  s_50bdd24589e78d::t_1467ad41883ce9 1-4,24-32,37
+  s_50bdd24589e78d::t_a9632e43fab06a 5-7,10-11,15,17-23,38
+  s_50bdd24589e78d::t_a1da1942141058 33-36
+.config/sketchybar/sketchybarrc
+  s_50bdd24589e78d::t_ef6ad6ed834670 82,117
+  s_50bdd24589e78d::t_92367e65a91684 129-130
+  s_50bdd24589e78d::t_d240f9b8b4aadb 131
+.config/sketchybar/plugins/battery.sh
+  s_50bdd24589e78d::t_d17054cd8f1974 3-4,34,37
+  s_50bdd24589e78d::t_b29cfdf7de7f03 8,12-19,21,23,25,27,29,32-33
+.config/sketchybar/plugins/volume.sh
+  s_50bdd24589e78d::t_3428edab1c9cfe 3,18-24
+.config/sketchybar/plugins/wifi.sh
+  s_50bdd24589e78d::t_ad541228de7fb0 3-4
+  s_50bdd24589e78d::t_1e4bbac610501b 5-8,12,14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "1dfbc4dbac0438caa2dfbf48c9d2784745638bb4",
+  "prompts": {},
+  "sessions": {
+    "s_50bdd24589e78d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f5f7ec50-7a0f-46ed-9ce8-88b6f167598c",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "zannis <zannis@aave.com>"
+    }
+  }
+}
