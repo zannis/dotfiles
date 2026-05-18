@@ -1,0 +1,21 @@
+.claude/CLAUDE.md
+  s_ccef28b6f8749c::t_ad49f2d2c552a7 1,3-9,11-13,15-21,23-24
+.claude/settings.json
+  s_ccef28b6f8749c::t_ffd4500edae6e4 25,29-30,42,45-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "07afa4dbb15f799630e28fcfd4fe4e7417e8c0ec",
+  "prompts": {},
+  "sessions": {
+    "s_ccef28b6f8749c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6d18cab4-c9fa-461f-8ff3-5dcb35915d98",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "zannis <zannis@aave.com>"
+    }
+  }
+}
