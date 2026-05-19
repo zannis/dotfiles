@@ -1,0 +1,49 @@
+// Per-project session layout. Start with: zj <project>
+// Tabs: main (nvim + shell + claude), lazygit, rainfrog, lazydocker.
+// Use the new-tab keybind for extra shell tabs.
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    tab name="code" focus=true {
+        pane split_direction="vertical" {
+            pane name="editor" size="65%" command="nvim"
+            pane split_direction="horizontal" {
+                pane name="shell" size="60%"
+                pane name="claude"
+            }
+        }
+    }
+
+    tab name="git" {
+        pane command="lazygit"
+    }
+
+    tab name="db" {
+        pane command="rainfrog"
+    }
+
+    tab name="docker" {
+        pane command="lazydocker"
+    }
+
+    tab name="claudemaxxing" {
+        pane split_direction="horizontal" {
+            pane split_direction="vertical" {
+                pane command="/Users/zannis/.local/bin/claude"
+                pane command="/Users/zannis/.local/bin/claude"
+            }
+            pane split_direction="vertical" {
+                pane command="/Users/zannis/.local/bin/claude"
+                pane command="/Users/zannis/.local/bin/claude"
+            }
+        }
+    }
+}
