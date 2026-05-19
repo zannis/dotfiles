@@ -1,0 +1,10 @@
+// Single-tab layout used by `wt <branch>` to spawn a new tab for a worktree.
+layout {
+    pane split_direction="vertical" {
+        pane name="editor" size="65%" command="nvim"
+        pane split_direction="horizontal" {
+            pane name="shell" size="60%"
+            pane name="claude"
+        }
+    }
+}
