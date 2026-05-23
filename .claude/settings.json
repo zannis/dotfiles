@@ -66,7 +66,17 @@
     "linear@claude-plugins-official": true,
     "ralph-loop@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "claude-retrospective@bitwarden-marketplace": true,
+    "bitwarden-code-review@bitwarden-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "bitwarden-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "bitwarden/ai-plugins"
+      }
+    }
   },
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",

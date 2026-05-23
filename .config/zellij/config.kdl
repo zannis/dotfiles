@@ -292,7 +292,7 @@ web_client {
  
 // Choose the theme that is specified in the themes section.
 // Default: default
-// 
+//
 // theme "dracula"
  
 // Theme to use when the host terminal reports a dark color palette.

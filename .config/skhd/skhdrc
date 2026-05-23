@@ -175,7 +175,10 @@ alt - t : yabai -m window --toggle float;\
 #           yabai -m window --toggle pip
 
 # app specifics
-ctrl - return : kitty --directory ~ -e zellij
+ctrl - return : kitty --directory ~
+
+# Sol launcher
+alt - d : open -a Sol
 
 ctrl + shift - q : pkill -9 $(yabai -m query --windows --window | jq -r .app | tr '[:upper:]' '[:lower:]')
 

@@ -60,7 +60,6 @@ _cache_eval() {
 }
 _cache_eval fzf 'fzf --zsh'
 command -v ngrok &>/dev/null && _cache_eval ngrok 'ngrok completion'
-_cache_eval zellij 'zellij setup --generate-auto-start zsh'
 
 # Tab completion
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh

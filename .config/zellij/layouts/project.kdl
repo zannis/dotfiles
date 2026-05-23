@@ -1,14 +1,46 @@
 // Per-project session layout. Start with: zj <project>
-// Tabs: main (nvim + shell + claude), lazygit, rainfrog, lazydocker.
+// Tabs: code, git, claudemaxxing, db (rainfrog + chdig), docker.
 // Use the new-tab keybind for extra shell tabs.
 layout {
     default_tab_template {
         children
         pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
-        }
-        pane size=2 borderless=true {
-            plugin location="zellij:status-bar"
+            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+                format_left   "{mode}#[fg=blue,bold] {session} "
+                format_center "{tabs}"
+                format_right  "{command_local} {command_nyc}"
+                format_space  "#[bg=default]"
+
+                mode_normal       "#[bg=blue,fg=black,bold]  NORMAL  "
+                mode_locked       "#[bg=red,fg=black,bold]  LOCKED  "
+                mode_resize       "#[bg=yellow,fg=black,bold]  RESIZE  "
+                mode_pane         "#[bg=blue,fg=black,bold]   PANE   "
+                mode_tab          "#[bg=green,fg=black,bold]    TAB   "
+                mode_scroll       "#[bg=magenta,fg=black,bold]  SCROLL  "
+                mode_search       "#[bg=magenta,fg=black,bold]  SEARCH  "
+                mode_session      "#[bg=cyan,fg=black,bold] SESSION  "
+                mode_tmux         "#[bg=yellow,fg=black,bold]   TMUX   "
+                mode_renametab    "#[bg=green,fg=black,bold]  RENAME  "
+                mode_renamepane   "#[bg=blue,fg=black,bold]  RENAME  "
+                mode_move         "#[bg=yellow,fg=black,bold]   MOVE   "
+
+                tab_normal              "#[fg=#a8a8a0] {index}:{name} "
+                tab_active              "#[fg=yellow,bold] {index}:{name} "
+                tab_normal_fullscreen   "#[fg=#a8a8a0] {index}:{name}[] "
+                tab_normal_sync         "#[fg=#a8a8a0] {index}:{name}<> "
+                tab_active_fullscreen   "#[fg=yellow,bold] {index}:{name}[] "
+                tab_active_sync         "#[fg=yellow,bold] {index}:{name}<> "
+
+                command_local_command    "env TZ=Europe/Athens date +%H:%M"
+                command_local_format     "#[fg=green]local {stdout} "
+                command_local_interval   "30"
+                command_local_rendermode "static"
+
+                command_nyc_command      "env TZ=America/New_York date +%H:%M"
+                command_nyc_format       "#[fg=yellow]nyc {stdout} "
+                command_nyc_interval     "30"
+                command_nyc_rendermode   "static"
+            }
         }
     }
 
@@ -26,14 +58,6 @@ layout {
         pane command="lazygit"
     }
 
-    tab name="db" {
-        pane command="rainfrog"
-    }
-
-    tab name="docker" {
-        pane command="lazydocker"
-    }
-
     tab name="claudemaxxing" {
         pane split_direction="horizontal" {
             pane split_direction="vertical" {
@@ -45,5 +69,16 @@ layout {
                 pane command="/Users/zannis/.local/bin/claude"
             }
         }
+    }
+
+    tab name="db" {
+        pane split_direction="vertical" {
+            pane name="rainfrog" command="rainfrog"
+            pane name="clickhouse" command="chdig"
+        }
+    }
+
+    tab name="docker" {
+        pane command="lazydocker-here"
     }
 }
