@@ -2,7 +2,16 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      -- Enable split-window stacking globally. Snacks wraps split layouts in
+      -- an internal vertical box that drops the inner `stack` field, so the
+      -- only reliable place to set it is the global `win` defaults read by
+      -- Snacks.config.get("win", ...). Without it, two sidebar pickers open
+      -- as side-by-side vsplits instead of stacking vertically.
+      win = { stack = true },
       explorer = { replace_netrw = true },
+      statuscolumn = {
+        folds = { open = false, git_hl = false },
+      },
       picker = {
         sources = {
           explorer = {
@@ -11,7 +20,32 @@ return {
             auto_close = false,
             follow_file = true,
             jump = { close = false },
-            layout = { preset = "sidebar", preview = false },
+            layout = {
+              preset = "sidebar",
+              preview = false,
+              layout = { height = 0.6 },
+            },
+            actions = {
+              focus_main = function(picker)
+                if picker.main and vim.api.nvim_win_is_valid(picker.main) then
+                  vim.api.nvim_set_current_win(picker.main)
+                else
+                  vim.cmd("wincmd p")
+                end
+              end,
+            },
+            win = {
+              input = { keys = { ["<Esc>"] = { "focus_main", mode = { "n", "i" } } } },
+              list = { keys = { ["<Esc>"] = "focus_main" } },
+            },
+          },
+          git_status = {
+            auto_close = false,
+            layout = {
+              preset = "sidebar",
+              preview = false,
+              layout = { height = 0.4 },
+            },
           },
         },
       },

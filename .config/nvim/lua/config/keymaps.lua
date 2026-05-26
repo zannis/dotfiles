@@ -48,8 +48,24 @@ map("n", "<A-o>", picker("files"), { desc = "JB: Find file (Cmd+Shift+O)" })
 map("n", "<A-a>", picker("commands"), { desc = "JB: Find action (Cmd+Shift+A)" })
 map("n", "<A-S-f>", picker("grep"), { desc = "JB: Find in path" })
 map("n", "<leader>e", function()
-  Snacks.explorer({ pattern = "", search = "" })
+  local pickers = Snacks.picker.get({ source = "explorer" })
+  if pickers and #pickers > 0 then
+    pickers[1]:focus()
+  else
+    Snacks.explorer({ pattern = "", search = "" })
+  end
+end, { desc = "Focus/open project tree" })
+map("n", "<leader>E", function()
+  local pickers = Snacks.picker.get({ source = "explorer" })
+  if pickers and #pickers > 0 then
+    pickers[1]:close()
+  else
+    Snacks.explorer({ pattern = "", search = "" })
+  end
 end, { desc = "Toggle project tree" })
+map("n", "<leader>gS", function()
+  Snacks.picker.git_status()
+end, { desc = "Git status (sidebar)" })
 
 -- Editing ───────────────────────────────────────────────────────────────────
 -- Toggle comment (terminals usually send <C-/> as <C-_>)
@@ -81,6 +97,41 @@ end, { desc = "JB: Reformat code" })
 map("n", "<A-Up>", function()
   pcall(vim.cmd, "TSNodeIncremental")
 end, { desc = "JB: Extend selection" })
+
+-- Folding ───────────────────────────────────────────────────────────────────
+map("n", "<A-->", "zc", { desc = "JB: Fold block" })
+map("n", "<A-=>", "zo", { desc = "JB: Unfold block" })
+map("n", "<A-+>", "zo", { desc = "JB: Unfold block" })
+
+-- Double-click in the gitsigns gutter → dialog with hunk actions.
+-- Outside the gutter, fall back to default word selection.
+map("n", "<2-LeftMouse>", function()
+  local m = vim.fn.getmousepos()
+  -- column == 0 ⇒ click was in sign/number/fold column, not on text.
+  if m.column == 0 and m.line > 0 and m.winid ~= 0 then
+    vim.api.nvim_set_current_win(m.winid)
+    vim.api.nvim_win_set_cursor(m.winid, { m.line, 0 })
+    vim.schedule(function()
+      vim.ui.select(
+        { "Preview hunk", "Reset hunk (restore from git)", "Stage hunk" },
+        { prompt = "Hunk at line " .. m.line .. ":" },
+        function(choice)
+          if not choice then return end
+          local gs = require("gitsigns")
+          if choice == "Preview hunk" then
+            gs.preview_hunk()
+          elseif choice == "Reset hunk (restore from git)" then
+            gs.reset_hunk()
+          elseif choice == "Stage hunk" then
+            gs.stage_hunk()
+          end
+        end
+      )
+    end)
+  else
+    vim.cmd("normal! viw")
+  end
+end, { desc = "JB: Gutter dbl-click → hunk dialog" })
 
 -- Quick actions ─────────────────────────────────────────────────────────────
 map({ "n", "v" }, "<A-CR>", lsp("code_action"), { desc = "JB: Code action (Alt+Enter)" })

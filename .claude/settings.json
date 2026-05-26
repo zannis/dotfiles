@@ -11,7 +11,8 @@
       "Bash(ls:*)",
       "WebFetch(domain:docs.rs)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Skill(superpowers:*)"
     ],
     "deny": [
       "Read(**/.env)",
@@ -68,7 +69,8 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
     "claude-retrospective@bitwarden-marketplace": true,
-    "bitwarden-code-review@bitwarden-marketplace": true
+    "bitwarden-code-review@bitwarden-marketplace": true,
+    "gopls-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "bitwarden-marketplace": {

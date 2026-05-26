@@ -1,5 +1,5 @@
 // Per-project session layout. Start with: zj <project>
-// Tabs: code, git, claudemaxxing, db (rainfrog + chdig), docker.
+// Tabs: code, git, db (rainfrog + chdig), docker.
 // Use the new-tab keybind for extra shell tabs.
 layout {
     default_tab_template {
@@ -34,12 +34,12 @@ layout {
                 command_local_command    "env TZ=Europe/Athens date +%H:%M"
                 command_local_format     "#[fg=green]local {stdout} "
                 command_local_interval   "30"
-                command_local_rendermode "static"
+                command_local_rendermode "dynamic"
 
                 command_nyc_command      "env TZ=America/New_York date +%H:%M"
                 command_nyc_format       "#[fg=yellow]nyc {stdout} "
                 command_nyc_interval     "30"
-                command_nyc_rendermode   "static"
+                command_nyc_rendermode   "dynamic"
             }
         }
     }
@@ -56,19 +56,6 @@ layout {
 
     tab name="git" {
         pane command="lazygit"
-    }
-
-    tab name="claudemaxxing" {
-        pane split_direction="horizontal" {
-            pane split_direction="vertical" {
-                pane command="/Users/zannis/.local/bin/claude"
-                pane command="/Users/zannis/.local/bin/claude"
-            }
-            pane split_direction="vertical" {
-                pane command="/Users/zannis/.local/bin/claude"
-                pane command="/Users/zannis/.local/bin/claude"
-            }
-        }
     }
 
     tab name="db" {
