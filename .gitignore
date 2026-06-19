@@ -8,3 +8,9 @@
 
 # karabiner writes timestamped autosaves here — config noise, not worth tracking
 .config/karabiner/automatic_backups/
+
+# secret-bearing config — auth tokens / DB credentials, never track
+.config/db-envs/
+.config/gh/
+.config/clickhouse/
+.config/github-copilot/
