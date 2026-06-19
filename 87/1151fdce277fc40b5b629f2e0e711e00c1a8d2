@@ -1,0 +1,21 @@
+.config/sketchybar/variables.sh
+  s_debabf540e1af1::t_3620320e2d7faa 50
+.config/yabai/yabairc
+  s_debabf540e1af1::t_3ecf09a7bae569 46-47,52-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "871151fdce277fc40b5b629f2e0e711e00c1a8d2",
+  "prompts": {},
+  "sessions": {
+    "s_debabf540e1af1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d5a1eefa-8ccd-4f13-b2e0-2c8b72ae9d81",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
