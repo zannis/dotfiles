@@ -24,18 +24,22 @@ export LDFLAGS="-L$HOMEBREW_PREFIX/opt/ffmpeg@7/lib -L$HOMEBREW_PREFIX/opt/llvm/
 export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/ffmpeg@7/include -I$HOMEBREW_PREFIX/opt/llvm/include"
 export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/ffmpeg@7/lib/pkgconfig"
 
-# NVM Configuration (lazy-loaded; saves ~670ms on startup)
-# First call to nvm/node/npm/npx in a session sources nvm.sh then runs the command.
+# NVM: put the default node version's bin straight on PATH at startup.
+# This is instant (no nvm.sh sourcing) so node/npm/npx are real binaries
+# available to everything, not just an interactive-shell wrapper function.
+# `nvm` itself stays lazy-loaded below for when you need to switch versions.
 export NVM_DIR="$HOME/.nvm"
-_nvm_load() {
-  unset -f nvm node npm npx
+if [ -r "$NVM_DIR/alias/default" ]; then
+  _nvm_default=$(<"$NVM_DIR/alias/default")
+  _nvm_bins=("$NVM_DIR/versions/node/v${_nvm_default}"*/bin(N))
+  (( $#_nvm_bins )) && path=("${_nvm_bins[-1]}" $path)
+  unset _nvm_default _nvm_bins
+fi
+nvm() {
+  unset -f nvm
   [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && . "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
-  [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && . "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"
+  nvm "$@"
 }
-nvm()  { _nvm_load; nvm  "$@"; }
-node() { _nvm_load; node "$@"; }
-npm()  { _nvm_load; npm  "$@"; }
-npx()  { _nvm_load; npx  "$@"; }
 
 # Plugin Loading
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -93,3 +97,6 @@ zstyle ':completion:*' menu select
 
 # Aliases
 source ~/.aliases
+
+# Added by git-ai installer on Wed May 27 03:14:03 EEST 2026
+export PATH="/Users/zannis/.git-ai/bin:$PATH"
