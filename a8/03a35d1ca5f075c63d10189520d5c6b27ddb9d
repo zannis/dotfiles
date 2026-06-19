@@ -1,0 +1,19 @@
+.gitignore
+  s_debabf540e1af1::t_b3714fad10e3d6 11-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "a803a35d1ca5f075c63d10189520d5c6b27ddb9d",
+  "prompts": {},
+  "sessions": {
+    "s_debabf540e1af1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d5a1eefa-8ccd-4f13-b2e0-2c8b72ae9d81",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
