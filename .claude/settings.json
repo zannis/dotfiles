@@ -12,12 +12,34 @@
       "WebFetch(domain:docs.rs)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Skill(superpowers:*)"
+      "Skill(superpowers:*)",
+      "Read(**/.env.example)",
+      "Write(**/.env.example)",
+      "Edit(**/.env.example)"
     ],
     "deny": [
       "Read(**/.env)",
-      "Read(**/.env.*)",
-      "Read(./secrets/**)"
+      "Write(**/.env)",
+      "Edit(**/.env)",
+      "Read(**/.env.local)",
+      "Write(**/.env.local)",
+      "Edit(**/.env.local)",
+      "Read(**/.env.staging)",
+      "Write(**/.env.staging)",
+      "Edit(**/.env.staging)",
+      "Read(**/.env.test)",
+      "Write(**/.env.test)",
+      "Edit(**/.env.test)",
+      "Read(**/.env.prod)",
+      "Write(**/.env.prod)",
+      "Edit(**/.env.prod)",
+      "Read(**/.env.production)",
+      "Write(**/.env.production)",
+      "Edit(**/.env.production)",
+      "Read(./secrets/**)",
+      "Read(~/.config/db-envs/**)",
+      "Write(~/.config/db-envs/**)",
+      "Edit(~/.config/db-envs/**)"
     ]
   },
   "hooks": {
@@ -29,6 +51,15 @@
             "type": "command",
             "command": "FILE=$(jq -r '.tool_input.file_path // .tool_response.filePath // empty'); case \"$FILE\" in *.rs) ;; *) exit 0;; esac; DIR=$(dirname \"$FILE\"); while [ \"$DIR\" != \"/\" ] && [ ! -f \"$DIR/Cargo.toml\" ]; do DIR=$(dirname \"$DIR\"); done; [ -f \"$DIR/Cargo.toml\" ] && cd \"$DIR\" && cargo fmt --all -q 2>&1 || true",
             "statusMessage": "cargo fmt --all"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/zannis/.git-ai/bin/git-ai checkpoint claude --hook-input stdin"
           }
         ]
       }
@@ -48,6 +79,15 @@
             "statusMessage": "cargo clippy (pre-commit gate)"
           }
         ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/zannis/.git-ai/bin/git-ai checkpoint claude --hook-input stdin"
+          }
+        ]
       }
     ],
     "SessionStart": [
@@ -63,14 +103,17 @@
     ]
   },
   "enabledPlugins": {
+    "bitwarden-code-review@bitwarden-marketplace": true,
+    "bitwarden-security-engineer@bitwarden-marketplace": true,
+    "bitwarden-software-engineer@bitwarden-marketplace": true,
+    "bitwarden-tech-lead@bitwarden-marketplace": true,
+    "claude-retrospective@bitwarden-marketplace": true,
     "figma@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
     "linear@claude-plugins-official": true,
     "ralph-loop@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true,
-    "claude-retrospective@bitwarden-marketplace": true,
-    "bitwarden-code-review@bitwarden-marketplace": true,
-    "gopls-lsp@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "bitwarden-marketplace": {
@@ -80,6 +123,7 @@
       }
     }
   },
+  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "autoCompactEnabled": false,

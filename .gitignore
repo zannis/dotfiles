@@ -5,3 +5,6 @@
 !/.config/
 !/.hushlogin
 !/.zshrc
+
+# karabiner writes timestamped autosaves here — config noise, not worth tracking
+.config/karabiner/automatic_backups/
