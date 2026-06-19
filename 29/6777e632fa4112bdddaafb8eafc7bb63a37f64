@@ -1,0 +1,70 @@
+.config/nvim/lazy-lock.json
+  s_debabf540e1af1::t_b6d92ce41b9807 2-3,6-7,12-13,17,19-21,27-28,34-36
+.claude/settings.json
+  s_dde715a7a2e054::t_54d0452399ec3a 39-42
+  s_b9f7f5b0ea411f::t_2a2b06f7611035 107-110,112
+  s_7c77df43206b55::t_c8afe553a5435d 27-38
+  s_7c77df43206b55::t_13679951aa2b34 24-26
+.config/nvim/lua/plugins/claudecode.lua
+  s_debabf540e1af1::t_8cb59908adb036 1-7
+.config/karabiner/assets/complex_modifications/1742123202.json
+  s_debabf540e1af1::t_8cb59908adb036 1-20
+.gitignore
+  s_debabf540e1af1::t_653162713986ca 8-10
+.config/karabiner/karabiner.json
+  s_debabf540e1af1::t_8cb59908adb036 1-110
+.config/karabiner/assets/complex_modifications/1742123227.json
+  s_debabf540e1af1::t_8cb59908adb036 1-195
+.config/nvim/lua/plugins/snacks.lua
+  s_b84c087f505883::t_1474ec60fc88d2 17,34
+.config/nvim/lua/plugins/markdown.lua
+  s_debabf540e1af1::t_8cb59908adb036 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "296777e632fa4112bdddaafb8eafc7bb63a37f64",
+  "prompts": {},
+  "sessions": {
+    "s_7c77df43206b55": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "05718bc5-b634-4215-bb00-3fd100bc795b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_b84c087f505883": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3d533a4-6a84-46bb-9d96-5c9dca146970",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_b9f7f5b0ea411f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7bbfea73-5bbe-4451-a23e-6f4e9e4fa31f",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_dde715a7a2e054": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "070846dc-0ec8-4101-9561-307f944a6d30",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_debabf540e1af1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d5a1eefa-8ccd-4f13-b2e0-2c8b72ae9d81",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}
