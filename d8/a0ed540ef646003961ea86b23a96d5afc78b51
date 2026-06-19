@@ -1,0 +1,19 @@
+.zshrc
+  s_debabf540e1af1::t_b1bc8f3e2cf94e 27-30,32-39,41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "d8a0ed540ef646003961ea86b23a96d5afc78b51",
+  "prompts": {},
+  "sessions": {
+    "s_debabf540e1af1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d5a1eefa-8ccd-4f13-b2e0-2c8b72ae9d81",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
