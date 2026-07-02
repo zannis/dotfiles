@@ -1,0 +1,30 @@
+.claude/CLAUDE.md
+  s_044e0bdf0bd2e2::t_18503684438fec 14-17
+.claude/settings.json
+  s_f8c35582fd31f3::t_9783f7e6de06f5 79
+  s_f8c35582fd31f3::t_3008f632d30d95 75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "b7e58e492b90902b5fa8f0a947f122e6bd5314c2",
+  "prompts": {},
+  "sessions": {
+    "s_044e0bdf0bd2e2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b5b0c52-19df-41d8-8946-60d656f0828b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_f8c35582fd31f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "395d22b5-cd27-4c68-8321-5bbb01f4511d",
+        "model": "claude-fable-5"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
