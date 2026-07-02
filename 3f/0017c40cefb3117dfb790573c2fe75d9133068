@@ -1,0 +1,47 @@
+.claude/CLAUDE.md
+  s_1737e413170712::t_de68c91d68cb8a 11-12
+  s_ba08d0730ef31d::t_334943cbcfc3ba 9
+.claude/settings.json
+  s_d5d4c8fcf9a2cf::t_31536264f9b1d8 129
+  s_ba76fc7180d567::t_d7b94954d0281f 43-44,46,134-135
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "3f0017c40cefb3117dfb790573c2fe75d9133068",
+  "prompts": {},
+  "sessions": {
+    "s_1737e413170712": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65bfe74f-e80f-4626-8add-ab90f9ee2dfa",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_ba08d0730ef31d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "246e8156-c0cb-4fbf-8a43-05f8663151fa",
+        "model": "claude-fable-5"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_ba76fc7180d567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a4fef80f-17e9-42e4-b77d-75224f92be95",
+        "model": "claude-fable-5"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_d5d4c8fcf9a2cf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "59c75c3b-e297-4528-bd4c-cb7968cae8df",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
