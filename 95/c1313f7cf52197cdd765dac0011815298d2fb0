@@ -1,0 +1,19 @@
+.claude/settings.json
+  s_86b46b233cb355::t_ca2289a421e153 105-126
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "95c1313f7cf52197cdd765dac0011815298d2fb0",
+  "prompts": {},
+  "sessions": {
+    "s_86b46b233cb355": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f49c5955-7bf4-40e0-96e9-a638598d9404",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
