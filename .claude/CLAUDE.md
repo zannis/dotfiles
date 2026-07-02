@@ -11,6 +11,10 @@
 - New dependencies are a last resort — triple-check first; audit the stdlib and current deps for the capability before adding one
 - Before adding a dep, check whether an existing one already covers it via a feature flag / optional feature / submodule — enabling that beats a new package
 
+## Rust
+- Never write code that can panic on the runtime path — no `unwrap()`, `expect()`, `panic!`, `unreachable!`, `todo!`, indexing that can go out of bounds, or arithmetic that can overflow/divide-by-zero. Propagate errors with `?` and typed error enums (`thiserror`), or handle them explicitly. If a case is truly impossible, encode it in the type system instead of asserting it at runtime.
+- The only place a panic is acceptable is fail-fast startup/init (config load, connection pool setup, `main`/`build`-time wiring) where crashing before serving traffic is the correct behavior — and even there, prefer returning `Result` from `main` with context. Tests and build scripts may `unwrap`/`expect` freely.
+
 ## Git
 - Never commit spec or plan documents (e.g. `docs/superpowers/specs/`, `docs/superpowers/plans/`)
 - Never add `Co-Authored-By` lines to commit messages

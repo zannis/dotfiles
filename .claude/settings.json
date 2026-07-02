@@ -43,7 +43,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5[1m]",
+  "model": "opus[1m]",
   "hooks": {
     "PostToolUse": [
       {
@@ -72,11 +72,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "CMD=$(jq -r '.tool_input.command'); if echo \"$CMD\" | grep -qE '^cargo (check|clippy|test|build|c|t|b)'; then cargo fix --allow-dirty --allow-staged; elif echo \"$CMD\" | grep -qE '^cd .* && cargo (check|clippy|test|build|c|t|b)'; then DIR=$(echo \"$CMD\" | sed -E 's/^cd ([^ ]*) &&.*/\\1/'); if [[ \"$DIR\" = /* ]]; then cd \"$DIR\"; else cd \"$CLAUDE_PROJECT_DIR/$DIR\"; fi && cargo fix --allow-dirty --allow-staged; fi"
+            "command": "CMD=$(jq -r '.tool_input.command'); run_fix() { TC=\"+1.91.1\"; [ -f rust-toolchain.toml ] && TC=\"\"; cargo $TC fix --allow-dirty --allow-staged; }; if echo \"$CMD\" | grep -qE '^cargo (check|clippy|test|build|c|t|b)'; then run_fix; elif echo \"$CMD\" | grep -qE '^cd .* && cargo (check|clippy|test|build|c|t|b)'; then DIR=$(echo \"$CMD\" | sed -E 's/^cd ([^ ]*) &&.*/\\1/'); if [[ \"$DIR\" = /* ]]; then cd \"$DIR\"; else cd \"$CLAUDE_PROJECT_DIR/$DIR\"; fi && run_fix; fi"
           },
           {
             "type": "command",
-            "command": "CMD=$(jq -r '.tool_input.command // empty'); echo \"$CMD\" | grep -qE 'git commit($|[[:space:]])' || exit 0; DIR=\"$PWD\"; PREFIX_DIR=$(echo \"$CMD\" | sed -nE 's/^[[:space:]]*cd[[:space:]]+([^ &]+).*/\\1/p'); if [ -n \"$PREFIX_DIR\" ]; then case \"$PREFIX_DIR\" in /*) DIR=\"$PREFIX_DIR\" ;; *) DIR=\"$PWD/$PREFIX_DIR\" ;; esac; fi; while [ \"$DIR\" != \"/\" ] && [ ! -f \"$DIR/Cargo.toml\" ]; do DIR=$(dirname \"$DIR\"); done; [ -f \"$DIR/Cargo.toml\" ] || exit 0; cd \"$DIR\" || exit 0; OUTPUT=$(cargo clippy --workspace --all-targets --all-features -q -- -D warnings 2>&1); EXIT=$?; if [ $EXIT -ne 0 ]; then echo \"cargo clippy failed - fix warnings before committing:\" >&2; echo \"$OUTPUT\" | tail -50 >&2; exit 2; fi",
+            "command": "CMD=$(jq -r '.tool_input.command // empty'); echo \"$CMD\" | grep -qE 'git commit($|[[:space:]])' || exit 0; DIR=\"$PWD\"; PREFIX_DIR=$(echo \"$CMD\" | sed -nE 's/^[[:space:]]*cd[[:space:]]+([^ &]+).*/\\1/p'); if [ -n \"$PREFIX_DIR\" ]; then case \"$PREFIX_DIR\" in /*) DIR=\"$PREFIX_DIR\" ;; *) DIR=\"$PWD/$PREFIX_DIR\" ;; esac; fi; while [ \"$DIR\" != \"/\" ] && [ ! -f \"$DIR/Cargo.toml\" ]; do DIR=$(dirname \"$DIR\"); done; [ -f \"$DIR/Cargo.toml\" ] || exit 0; cd \"$DIR\" || exit 0; TC=\"+1.91.1\"; [ -f rust-toolchain.toml ] && TC=\"\"; OUTPUT=$(cargo $TC clippy --workspace --all-targets --all-features -q -- -D warnings 2>&1); EXIT=$?; if [ $EXIT -ne 0 ]; then echo \"cargo clippy failed - fix warnings before committing:\" >&2; echo \"$OUTPUT\" | tail -50 >&2; exit 2; fi",
             "timeout": 300,
             "statusMessage": "cargo clippy (pre-commit gate)"
           }
@@ -128,9 +128,9 @@
   "effortLevel": "high",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
   "theme": "dark",
   "autoCompactEnabled": false,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
-  "skipWorkflowUsageWarning": true
+  "voiceEnabled": true
 }
