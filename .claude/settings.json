@@ -40,8 +40,10 @@
       "Read(~/.config/db-envs/**)",
       "Write(~/.config/db-envs/**)",
       "Edit(~/.config/db-envs/**)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "PostToolUse": [
       {
@@ -124,9 +126,11 @@
     }
   },
   "effortLevel": "high",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "autoCompactEnabled": false,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "skipWorkflowUsageWarning": true
 }
