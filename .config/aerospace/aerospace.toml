@@ -1,0 +1,176 @@
+# Migrated from yabai (~/.config/yabai/yabairc) + skhd (~/.config/skhd/skhdrc)
+
+config-version = 2
+
+# fully dynamic workspaces: empty ones cease to exist, like yabai + clean_empty_spaces.sh
+persistent-workspaces = []
+
+start-at-login = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# yabai: layout bsp
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+# yabai: focus_follows_mouse autoraise
+focus-follows-mouse.enabled = true
+
+# yabai: mouse_follows_focus on
+on-focus-changed = ['move-mouse window-lazy-center']
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# sketchybar workspace indicator sync
+exec-on-workspace-change = ['/bin/bash', '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+
+[exec.env-vars]
+PATH = '/opt/homebrew/bin:/usr/local/bin:${PATH}'
+
+# yabai: padding 10 + window_gap 10
+# top: built-in reserves the 38px notch strip (38 + 4 = 42); external monitors
+# reserve nothing (menu bar auto-hides), so they need the full 42 for sketchybar
+[gaps]
+inner.horizontal = 10
+inner.vertical = 10
+outer.left = 10
+outer.bottom = 10
+outer.top = [{ monitor.'built-in' = 4 }, 42]
+outer.right = 10
+
+[mode.main.binding]
+# focus window (skhd: alt - h/j/k/l)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# move window (skhd: shift + alt - h/j/k/l → yabai --warp)
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# resize (skhd: shift + alt - w/a/s/d, 50px steps)
+alt-shift-w = 'resize height -50'
+alt-shift-a = 'resize width -50'
+alt-shift-s = 'resize height +50'
+alt-shift-d = 'resize width +50'
+
+# toggle split orientation (skhd: alt - e)
+alt-e = 'layout tiles horizontal vertical'
+
+# stack focused window vertically with its left neighbor (bsp-style 1+2 shape)
+alt-v = 'join-with left'
+
+# float / unfloat (skhd: alt - t)
+alt-t = 'layout floating tiling'
+
+# traverse workspaces (skhd: cmd - tab / shift + cmd - tab)
+# cmd-tab may be swallowed by the macOS app switcher — alt-tab is the guaranteed fallback
+# piped --stdin list makes next/prev traverse ALL workspaces, not just the focused monitor's
+cmd-tab = 'exec-and-forget aerospace list-workspaces --all | aerospace workspace --wrap-around --stdin next'
+cmd-shift-tab = 'exec-and-forget aerospace list-workspaces --all | aerospace workspace --wrap-around --stdin prev'
+alt-tab = 'exec-and-forget aerospace list-workspaces --all | aerospace workspace --wrap-around --stdin next'
+alt-shift-tab = 'exec-and-forget aerospace list-workspaces --all | aerospace workspace --wrap-around --stdin prev'
+
+# focus workspace; 1/2 are the named brave/chat workspaces
+cmd-1 = 'workspace brave'
+cmd-2 = 'workspace chat'
+cmd-3 = 'workspace 3'
+cmd-4 = 'workspace 4'
+cmd-5 = 'workspace 5'
+cmd-6 = 'workspace 6'
+
+# send window to workspace and follow; 1/2 mirror the cmd-1/cmd-2 focus bindings
+cmd-shift-1 = 'move-node-to-workspace --focus-follows-window brave'
+cmd-shift-2 = 'move-node-to-workspace --focus-follows-window chat'
+cmd-shift-3 = 'move-node-to-workspace --focus-follows-window 3'
+cmd-shift-4 = 'move-node-to-workspace --focus-follows-window 4'
+cmd-shift-5 = 'move-node-to-workspace --focus-follows-window 5'
+cmd-shift-6 = 'move-node-to-workspace --focus-follows-window 6'
+
+# "create space, move window, follow" (skhd: shift + cmd - z) → first unused workspace 3-10
+cmd-shift-z = 'exec-and-forget all="$(aerospace list-workspaces --all)"; for i in $(seq 3 10); do echo "$all" | grep -qx "$i" || { aerospace move-node-to-workspace --focus-follows-window "$i"; break; }; done'
+
+# terminal (skhd: ctrl - return)
+ctrl-enter = 'exec-and-forget open -na kitty --args --directory "$HOME"'
+
+# Sol launcher (skhd: alt - d)
+alt-d = 'exec-and-forget open -a Sol'
+
+# kill focused app (skhd: ctrl + shift - q)
+ctrl-shift-q = "exec-and-forget kill -9 $(aerospace list-windows --focused --format '%{app-pid}')"
+
+# reveal dock on left edge of main display (skhd: cmd + alt - d)
+cmd-alt-d = '''exec-and-forget cliclick m:32,$(osascript -e 'tell application "Finder" to get bounds of window of desktop' | awk -F', ' '{print int($4/2)}')'''
+
+# app specifics (yabai rules: manage=off → floating)
+[[on-window-detected]]
+if.app-id = 'com.apple.calculator'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.SystemProfiler'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Stickies'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'io.mpv'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.videolan.vlc'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.valvesoftware.steam'
+run = 'layout floating'
+
+# yabai signal: keep MetaMask popup floating
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+if.window-title-regex-substring = 'MetaMask Notification'
+run = 'layout floating'
+
+# force apps into their named workspaces
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+run = 'move-node-to-workspace brave'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace chat'
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace chat'
+
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = 'move-node-to-workspace chat'
+
+[[on-window-detected]]
+if.app-id = 'org.whispersystems.signal-desktop'
+run = 'move-node-to-workspace chat'
