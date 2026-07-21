@@ -43,7 +43,11 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "claude-fable-5[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/scripts/statusline.py"
+  },
   "hooks": {
     "PostToolUse": [
       {
