@@ -1,0 +1,51 @@
+.config/aerospace/aerospace.toml
+  s_e49da55f0eb946::t_8d999b6cd9b19d 65-67
+  s_e49da55f0eb946::t_b86abf343586d0 1-2,8-16,20-31,35-39,41-64,68-72,78,90-94,97-155
+  s_eedd0aa15368d4::t_d5b26c1d9e00a2 33-34,40
+  s_331503ca918ecb::t_bb2993d930d662 81,86
+  s_331503ca918ecb::t_7b213a14db6641 165-167
+  s_331503ca918ecb::t_5aec41cc9509b3 164,168-176
+  s_e49da55f0eb946::t_cef5c583315f8f 17-19
+  s_eedd0aa15368d4::t_f4d6206bec1016 73-77
+  s_e49da55f0eb946::t_880c18baf32230 156-163
+  s_e49da55f0eb946::t_de9364349b4f65 80
+  s_e49da55f0eb946::t_521bebc717fa35 3-7
+  s_e49da55f0eb946::t_3df724b13b2861 32
+  s_331503ca918ecb::t_b7602db14b172c 79,82-85
+  s_331503ca918ecb::t_797a2ce48f872d 87-89,95-96
+.config/skhd/skhdrc
+  s_eedd0aa15368d4::t_3331015e3982ef 6-8
+  s_e49da55f0eb946::t_5038f054c773d1 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "417c9d3da2b5eae46a59034172adca649949ccd4",
+  "prompts": {},
+  "sessions": {
+    "s_331503ca918ecb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e2fe39a-4e57-4c5b-a25b-1e3fae3b2929",
+        "model": "claude-fable-5"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_e49da55f0eb946": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9cec2707-bc68-4dc8-aae9-033324323afa",
+        "model": "claude-fable-5"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_eedd0aa15368d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0688cdef-71b0-423c-8103-1cbf90b78d0c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
