@@ -97,6 +97,3 @@ zstyle ':completion:*' menu select
 
 # Aliases
 source ~/.aliases
-
-# Added by git-ai installer on Wed May 27 03:14:03 EEST 2026
-export PATH="/Users/zannis/.git-ai/bin:$PATH"
