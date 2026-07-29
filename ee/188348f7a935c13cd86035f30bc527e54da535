@@ -1,0 +1,19 @@
+.aliases
+  s_873f4c0e25214b::t_b4f56ffd378a5e 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "ee188348f7a935c13cd86035f30bc527e54da535",
+  "prompts": {},
+  "sessions": {
+    "s_873f4c0e25214b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ffa92103-340f-4197-b8fc-5329c435da93",
+        "model": "unknown"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
