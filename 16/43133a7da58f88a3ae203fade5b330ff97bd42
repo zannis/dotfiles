@@ -1,0 +1,19 @@
+.config/karabiner/karabiner.json
+  s_a2a9fa66dc0bf7::t_595ec92454f1d0 101-104
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "1643133a7da58f88a3ae203fade5b330ff97bd42",
+  "prompts": {},
+  "sessions": {
+    "s_a2a9fa66dc0bf7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ce8877e-a7e2-4c70-9704-cad27c51a0fd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
