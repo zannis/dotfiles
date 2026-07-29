@@ -14,10 +14,12 @@
 ## Rust
 - Never write code that can panic on the runtime path — no `unwrap()`, `expect()`, `panic!`, `unreachable!`, `todo!`, indexing that can go out of bounds, or arithmetic that can overflow/divide-by-zero. Propagate errors with `?` and typed error enums (`thiserror`), or handle them explicitly. If a case is truly impossible, encode it in the type system instead of asserting it at runtime.
 - The only place a panic is acceptable is fail-fast startup/init (config load, connection pool setup, `main`/`build`-time wiring) where crashing before serving traffic is the correct behavior — and even there, prefer returning `Result` from `main` with context. Tests and build scripts may `unwrap`/`expect` freely.
+- Zero tolerance for unchecked arithmetic on runtime paths — no bare `+`/`-`/`*`/`/`/`%` that can overflow, underflow, wrap, or divide by zero, including `Decimal` and other bignum types (their operators panic or silently saturate too). Use `checked_*`/`saturating_*`/`try_*` with explicit error handling; this applies to pre-existing code touched by a change, not just new lines — fix it, don't inherit it.
 
 ## Git
 - Never commit spec or plan documents (e.g. `docs/superpowers/specs/`, `docs/superpowers/plans/`)
 - Never add `Co-Authored-By` lines to commit messages
+- When starting work in a new worktree, always fetch the latest main first and base the worktree/branch on it, unless explicitly asked to use a different base
 
 ## Testing
 - TDD by default

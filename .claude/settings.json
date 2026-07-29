@@ -1,4 +1,7 @@
 {
+  "env": {
+    "CLAUDE_CODE_FORCE_SESSION_PERSISTENCE": "1"
+  },
   "permissions": {
     "allow": [
       "Read(~/.claude/CLAUDE.md)",
@@ -43,11 +46,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5[1m]",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/scripts/statusline.py"
-  },
+  "model": "opus[1m]",
   "hooks": {
     "PostToolUse": [
       {
@@ -57,15 +56,6 @@
             "type": "command",
             "command": "FILE=$(jq -r '.tool_input.file_path // .tool_response.filePath // empty'); case \"$FILE\" in *.rs) ;; *) exit 0;; esac; DIR=$(dirname \"$FILE\"); while [ \"$DIR\" != \"/\" ] && [ ! -f \"$DIR/Cargo.toml\" ]; do DIR=$(dirname \"$DIR\"); done; [ -f \"$DIR/Cargo.toml\" ] && cd \"$DIR\" && cargo fmt --all -q 2>&1 || true",
             "statusMessage": "cargo fmt --all"
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/zannis/.git-ai/bin/git-ai checkpoint claude --hook-input stdin"
           }
         ]
       }
@@ -85,15 +75,6 @@
             "statusMessage": "cargo clippy (pre-commit gate)"
           }
         ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/zannis/.git-ai/bin/git-ai checkpoint claude --hook-input stdin"
-          }
-        ]
       }
     ],
     "SessionStart": [
@@ -106,29 +87,11 @@
           }
         ]
       }
-    ],
-    "UserPromptSubmit": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/scripts/prevent_sleep.sh"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/scripts/allow_sleep.sh"
-          }
-        ]
-      }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/scripts/statusline.py"
   },
   "enabledPlugins": {
     "bitwarden-code-review@bitwarden-marketplace": true,
@@ -141,7 +104,8 @@
     "linear@claude-plugins-official": true,
     "ralph-loop@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "bitwarden-marketplace": {
