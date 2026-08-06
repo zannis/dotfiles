@@ -9,6 +9,11 @@
 # karabiner writes timestamped autosaves here — config noise, not worth tracking
 .config/karabiner/automatic_backups/
 
+# Its own repo (zannis/claude-skills): the manual skill set, split from the
+# autonomous one the agent runner carries in ~/agents/skills. Tracking it here too
+# would mean two histories for one directory.
+/.claude/skills/
+
 # secret-bearing config — auth tokens / DB credentials, never track
 .config/db-envs/
 .config/gh/
