@@ -1,7 +1,9 @@
 # Migrated to AeroSpace (~/.config/aerospace/aerospace.toml).
-# skhd is kept only for cmd-tab: its event tap can steal cmd-tab from the
+# skhd is kept for cmd-tab: its event tap can steal cmd-tab from the
 # macOS app switcher, which AeroSpace's Carbon hotkeys cannot do reliably.
-# If you retrain to alt-tab (bound in aerospace.toml), skhd can be removed.
+# It also owns the terminal binding so it survives AeroSpace being absent.
+
+cmd - return : open -na kitty --args --directory "$HOME"
 
 # piped --stdin list traverses ALL workspaces across monitors, not just the focused one's
 cmd - tab : /opt/homebrew/bin/aerospace list-workspaces --all | /opt/homebrew/bin/aerospace workspace --wrap-around --stdin next
