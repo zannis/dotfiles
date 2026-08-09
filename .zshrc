@@ -44,7 +44,7 @@ nvm() {
 # Plugin Loading
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOMEBREW_PREFIX/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # Cargo Environment
 source "$HOME/.cargo/env"
@@ -97,3 +97,10 @@ zstyle ':completion:*' menu select
 
 # Aliases
 source ~/.aliases
+
+# bun completions
+[ -s "/Users/zannis/.bun/_bun" ] && source "/Users/zannis/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

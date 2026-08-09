@@ -11,3 +11,8 @@ alias εχιτ="exit"
 # common-aliases (oh-my-zsh) aliases `fd` to `find . -type d -name`, which shadows
 # the real fd. .aliases is sourced after oh-my-zsh, so unaliasing here wins.
 unalias fd 2>/dev/null
+
+# Same plugin forces rm/cp/mv into -i. Any non-interactive caller — an agent, a
+# script run with `zsh -ic`, a heredoc — then blocks forever on a prompt nobody
+# reads instead of failing or succeeding.
+unalias rm cp mv 2>/dev/null
