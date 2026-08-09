@@ -18,7 +18,8 @@
 
 ## Git
 - Never commit spec or plan documents (e.g. `docs/superpowers/specs/`, `docs/superpowers/plans/`)
-- Never add `Co-Authored-By` lines to commit messages
+- Branches are `zannis/<type>/<slug>` — `<type>` a Conventional-Commit type, `<slug>` kebab-case, at most five words, describing the change. Never a ticket id, agent name, date or Paperclip identifier
+- Nothing internal to this setup reaches a real repository — not in a branch, a commit, a PR title or body, or a comment: `GIA-<n>` and other Paperclip ids, `Giant`/`Paperclip`/agent names, generated-by trailers (`Co-Authored-By`, `🤖 Generated with …`), or references to spec/plan docs. Those reviewers have no context on it. Linear ids belong on the PR body's `Closes:` line and nowhere else
 - When starting work in a new worktree, always fetch the latest main first and base the worktree/branch on it, unless explicitly asked to use a different base
 
 ## Testing
@@ -31,3 +32,48 @@
 
 ## Cargo
 - Always pass `-q` to cargo commands
+
+## Shell — quiet by default
+Context is re-read on every turn, so progress chatter is paid for hundreds of times.
+Suppress output that carries no information; never suppress output you need to read.
+
+- `git`: pass `-q` to `fetch` `clone` `checkout` `switch` `add` `commit` `push` `merge`
+  `worktree add` `stash`. Never to `diff` `log` `show` `status` — those *are* the answer.
+- `cargo -q`, `pnpm --silent`, `npm --silent`, `curl -sS`. For `gh`, use
+  `--json <fields> -q <jq>` rather than piping full output.
+- Bound anything unbounded: `| head -n N`, `--stat` before a full `diff`, `-l`/`-c` on
+  `grep` when you only need which files or how many.
+- On success, prefer no output — `&& echo ok` beats a wall of progress lines.
+- Redirect known-noisy stdout to a file and grep the file, rather than reading it inline.
+
+## GitNexus — graph lookups once you have a symbol name
+Repos are indexed into a symbol/call graph served over MCP. The graph answers questions
+about a symbol's relationships far cheaper than reading the files would. It does not
+find symbols by concept — get the name first with grep, then reach for these three,
+and nothing else:
+
+- `mcp__gitnexus__context` — callers, callees and flows for one symbol.
+- `mcp__gitnexus__impact` — blast radius before editing a symbol. Say so if it comes
+  back HIGH/CRITICAL.
+- `mcp__gitnexus__trace` — shortest call path between two symbols.
+
+Never reach for `query`. It is advertised as semantic search but returns plain keyword
+hits: its vector half is dead — the VECTOR extension is never loaded on the read path,
+so the embedding index is unreachable and the results are BM25 alone. Loading it makes
+ranking measurably *worse*, because a third of the index is one-token struct-field and
+const nodes that outscore real function bodies. Grep is the honest version of this tool.
+Also empty: `explain` and `pdg_query` (need `analyze --pdg`, not built), `tool_map`,
+`shape_check`.
+
+Every call needs a `repo`. Each worktree is its own index, and the alias is path-derived:
+`repos/<name>` → `<name>`, `worktrees/<repo>/<slug>` → `<repo>--<slug>` (so
+`worktrees/perpetuals/oracle-fix` → `perpetuals--oracle-fix`). Querying the wrong alias
+returns another tree's code — confirm with `list_repos` rather than guessing. If your own
+worktree is not listed yet, fall back to the base repo alias (`perpetuals`, `e2e-defi`)
+and treat the answer as base-branch code — still far cheaper than reading files.
+
+Never run `gitnexus analyze` by hand: it appends to tracked `CLAUDE.md`/`AGENTS.md` and
+writes skills into the repo. Git hooks keep the index current; if it looks stale, say so
+instead of re-indexing.
+
+@RTK.md

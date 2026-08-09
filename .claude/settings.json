@@ -17,36 +17,44 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "Skill(superpowers:*)",
       "Read(**/.env.example)",
-      "Write(**/.env.example)",
-      "Edit(**/.env.example)"
+      "Edit(**/.env.example)",
+      "Bash(curl -sS -X PATCH http://127.0.0.1:3100/*)",
+      "Bash(curl -sS -X PATCH http://localhost:3100/*)",
+      "mcp__gitnexus__context",
+      "mcp__gitnexus__impact",
+      "mcp__gitnexus__trace",
+      "mcp__gitnexus__list_repos"
     ],
     "deny": [
+      "mcp__gitnexus__query",
+      "mcp__gitnexus__cypher",
+      "mcp__gitnexus__group_list",
+      "mcp__gitnexus__group_sync",
+      "mcp__gitnexus__rename",
       "Read(**/.env)",
-      "Write(**/.env)",
       "Edit(**/.env)",
       "Read(**/.env.local)",
-      "Write(**/.env.local)",
       "Edit(**/.env.local)",
       "Read(**/.env.staging)",
-      "Write(**/.env.staging)",
       "Edit(**/.env.staging)",
       "Read(**/.env.test)",
-      "Write(**/.env.test)",
       "Edit(**/.env.test)",
       "Read(**/.env.prod)",
-      "Write(**/.env.prod)",
       "Edit(**/.env.prod)",
       "Read(**/.env.production)",
-      "Write(**/.env.production)",
       "Edit(**/.env.production)",
       "Read(./secrets/**)",
       "Read(~/.config/db-envs/**)",
-      "Write(~/.config/db-envs/**)",
       "Edit(~/.config/db-envs/**)"
     ],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "fable",
+  "deniedMcpServers": [
+    {
+      "serverUrl": "https://mcp.notion.com/*"
+    }
+  ],
   "hooks": {
     "PostToolUse": [
       {
@@ -75,15 +83,13 @@
             "statusMessage": "cargo clippy (pre-commit gate)"
           }
         ]
-      }
-    ],
-    "SessionStart": [
+      },
       {
-        "matcher": "*",
+        "matcher": "Bash",
         "hooks": [
           {
             "type": "command",
-            "command": "cat ~/.claude/CLAUDE.md"
+            "command": "rtk hook claude"
           }
         ]
       }
@@ -94,18 +100,19 @@
     "command": "~/.claude/scripts/statusline.py"
   },
   "enabledPlugins": {
-    "bitwarden-code-review@bitwarden-marketplace": true,
-    "bitwarden-security-engineer@bitwarden-marketplace": true,
-    "bitwarden-software-engineer@bitwarden-marketplace": true,
-    "bitwarden-tech-lead@bitwarden-marketplace": true,
+    "bitwarden-code-review@bitwarden-marketplace": false,
+    "bitwarden-security-engineer@bitwarden-marketplace": false,
+    "bitwarden-software-engineer@bitwarden-marketplace": false,
+    "bitwarden-tech-lead@bitwarden-marketplace": false,
     "claude-retrospective@bitwarden-marketplace": true,
-    "figma@claude-plugins-official": true,
+    "figma@claude-plugins-official": false,
     "gopls-lsp@claude-plugins-official": true,
-    "linear@claude-plugins-official": true,
+    "linear@claude-plugins-official": false,
     "ralph-loop@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
-    "security-guidance@claude-plugins-official": true
+    "security-guidance@claude-plugins-official": true,
+    "mattpocock-skills@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
     "bitwarden-marketplace": {
