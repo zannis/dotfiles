@@ -114,7 +114,6 @@ source "$PLUGIN_DIR/spotify.sh"
 ##### Keyboard layout plugin
 keyboard=(
     icon.drawing=off
-#    label.font="$FONT:Semibold:14.0"
     script="$PLUGIN_DIR/keyboard.sh"
 )
 

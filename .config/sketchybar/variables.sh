@@ -35,8 +35,6 @@ LABEL_COLOR=$WHITE # Color of all labels
 ITEM_DIR="$HOME/.config/sketchybar/items"
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
-FONT="MesloLGS NF"
-
 PADDINGS=3
 
 POPUP_BORDER_WIDTH=2
