@@ -12,7 +12,13 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 
 # yabai: layout bsp
 default-root-container-layout = 'tiles'
+# ignored while window-placement = 'stack-in-column' (that mode forces a horizontal outer axis)
 default-root-container-orientation = 'auto'
+
+# yabai: split_type auto — one row of columns; a new window stacks in the focused window's column
+# Overrides default-root-container-orientation, and forces the lone-column collapse and the column
+# axis regardless of the two enable-normalization-* keys above. See guide#window-placement
+window-placement = 'stack-in-column'
 
 # yabai: focus_follows_mouse autoraise
 focus-follows-mouse.enabled = true
