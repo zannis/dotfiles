@@ -57,10 +57,6 @@
 #disable_click = false
 # Built-in themes.  Valid values are "default", "default-light", "gruvbox", "gruvbox-light", "nord", "nord-light"
 #color = "default"
-# Show memory values in the processes widget as values by default
-mem_as_value = true
-# Show tree mode by default in the processes widget.
-tree = true
 # Shows an indicator in table widgets tracking where in the list you are.
 #show_table_scroll_position = false
 # Show processes as their commands by default in the process widget.
@@ -75,15 +71,21 @@ tree = true
 #disable_advanced_kill = false
 # Shows GPU(s) memory
 #enable_gpu = false
-# Shows cache and buffer memory
-enable_cache_memory = true
 # How much data is stored at once in terms of time.
 #retention = "10m"
 
 # These are flags around the process widget.
 
-#[processes]
+[processes]
 #columns = ["PID", "Name", "CPU%", "Mem%", "R/s", "W/s", "T.Read", "T.Write", "User", "State", "GMEM%", "GPU%"]
+# Show tree mode by default in the processes widget.
+default_tree = true
+# Defaults to showing process memory usage by value.
+default_memory_value = true
+
+[memory]
+# Shows cache and buffer memory. Linux only.
+cache_memory = true
 
 # [cpu]
 # One of "all" (default), "average"/"avg"
