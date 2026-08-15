@@ -46,16 +46,24 @@ Suppress output that carries no information; never suppress output you need to r
 - On success, prefer no output — `&& echo ok` beats a wall of progress lines.
 - Redirect known-noisy stdout to a file and grep the file, rather than reading it inline.
 
-## GitNexus — graph lookups once you have a symbol name
-Repos are indexed into a symbol/call graph served over MCP. The graph answers questions
-about a symbol's relationships far cheaper than reading the files would. It does not
-find symbols by concept — get the name first with grep, then reach for these three,
-and nothing else:
+## GitNexus — the default for symbol relationships
+Repos are indexed into a symbol/call graph served over MCP. Grep finds the *name*; every
+question about the name's *relationships* goes to the graph first, not to more grep/Read.
+One call returns exact callers with file:line for a few hundred tokens, where opening the
+files costs tens of thousands. The tools are deferred — load them once per session with
+`ToolSearch("select:mcp__gitnexus__context,mcp__gitnexus__impact,mcp__gitnexus__trace")`.
 
-- `mcp__gitnexus__context` — callers, callees and flows for one symbol.
-- `mcp__gitnexus__impact` — blast radius before editing a symbol. Say so if it comes
-  back HIGH/CRITICAL.
-- `mcp__gitnexus__trace` — shortest call path between two symbols.
+Three moments where the graph call is the next step, not an option:
+
+- Have a symbol name, need who calls it / what it calls → `mcp__gitnexus__context`.
+  Then read only the files it names.
+- About to edit a shared symbol → `mcp__gitnexus__impact` (direction `upstream`)
+  **before** the edit; a HIGH/CRITICAL blast radius goes in the plan and the PR.
+- Connecting an entry point to a suspect symbol (bug mechanism, "how does A reach B") →
+  `mcp__gitnexus__trace` — one call instead of hopping files.
+
+A graph error or a symbol missing from the index → say so and fall back to grep; never
+silently skip the graph.
 
 Never reach for `query`. It is advertised as semantic search but returns plain keyword
 hits: its vector half is dead — the VECTOR extension is never loaded on the read path,
