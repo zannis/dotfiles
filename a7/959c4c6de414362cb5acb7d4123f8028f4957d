@@ -1,0 +1,37 @@
+.config/aerospace/aerospace.toml
+  s_91ebe8604428a3::t_ff9ad739359947 178-181
+  s_53473a741cf10a::t_31622f27660620 16
+  s_95b8d9eee83800::t_8493a2c16b0bc3 45-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "a7959c4c6de414362cb5acb7d4123f8028f4957d",
+  "prompts": {},
+  "sessions": {
+    "s_53473a741cf10a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3562ca8c-082b-4b97-9cc1-ac2e6f25db5d",
+        "model": "claude-opus-5"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_91ebe8604428a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1569b95-fc23-4c7e-9c8f-7ce6b6e786d7",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_95b8d9eee83800": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e3ef0ffa-8bdb-4824-9663-2f650760682d",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
