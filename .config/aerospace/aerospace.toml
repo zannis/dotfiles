@@ -47,17 +47,17 @@ outer.top = [{ monitor.'built-in' = 4 }, 42]
 outer.right = 10
 
 [mode.main.binding]
-# focus window (skhd: alt - h/j/k/l)
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+# focus window (skhd: alt - h/j/k/l); crosses to the adjacent monitor at the edge
+alt-h = 'focus --boundaries all-monitors-outer-frame left'
+alt-j = 'focus --boundaries all-monitors-outer-frame down'
+alt-k = 'focus --boundaries all-monitors-outer-frame up'
+alt-l = 'focus --boundaries all-monitors-outer-frame right'
 
-# move window (skhd: shift + alt - h/j/k/l → yabai --warp)
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+# move window (skhd: shift + alt - h/j/k/l → yabai --warp); crosses to the adjacent monitor at the edge
+alt-shift-h = 'move --boundaries all-monitors-outer-frame left'
+alt-shift-j = 'move --boundaries all-monitors-outer-frame down'
+alt-shift-k = 'move --boundaries all-monitors-outer-frame up'
+alt-shift-l = 'move --boundaries all-monitors-outer-frame right'
 
 # resize (skhd: shift + alt - w/a/s/d, 50px steps)
 alt-shift-w = 'resize height -50'
@@ -179,4 +179,8 @@ run = 'move-node-to-workspace chat'
 
 [[on-window-detected]]
 if.app-id = 'org.whispersystems.signal-desktop'
+run = 'move-node-to-workspace chat'
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace chat'
