@@ -1,0 +1,56 @@
+.config/aerospace/aerospace.toml
+  s_91ebe8604428a3::t_ff9ad739359947 183-186
+  s_95b8d9eee83800::t_8493a2c16b0bc3 50-60
+.claude/CLAUDE.md
+  s_3bdcf3a5990979::t_cc5537c023d480 35,40
+.claude/settings.json
+  s_5ff430bf740dd3::t_b3df281e6c81cd 19,34,35-36,37-38,39-40,41-42,43-44,45-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "eb10e47a550c8508384de37c1902a6d419da795a",
+  "prompts": {},
+  "sessions": {
+    "s_3bdcf3a5990979": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4b5189c5-86fc-4e11-82d0-6c1a2dc508c4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_53473a741cf10a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3562ca8c-082b-4b97-9cc1-ac2e6f25db5d",
+        "model": "claude-opus-5"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_5ff430bf740dd3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db75c94d-ad5d-4d30-8234-a6ff11763f3d",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_91ebe8604428a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1569b95-fc23-4c7e-9c8f-7ce6b6e786d7",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    },
+    "s_95b8d9eee83800": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e3ef0ffa-8bdb-4824-9663-2f650760682d",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
