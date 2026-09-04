@@ -16,8 +16,8 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Skill(superpowers:*)",
-      "Read(**/.env.example)",
-      "Edit(**/.env.example)",
+      "Read(~/**/.env.example)",
+      "Edit(~/**/.env.example)",
       "Bash(curl -sS -X PATCH http://127.0.0.1:3100/*)",
       "Bash(curl -sS -X PATCH http://localhost:3100/*)",
       "mcp__gitnexus__context",
@@ -31,30 +31,25 @@
       "mcp__gitnexus__group_list",
       "mcp__gitnexus__group_sync",
       "mcp__gitnexus__rename",
-      "Read(**/.env)",
-      "Edit(**/.env)",
-      "Read(**/.env.local)",
-      "Edit(**/.env.local)",
-      "Read(**/.env.staging)",
-      "Edit(**/.env.staging)",
-      "Read(**/.env.test)",
-      "Edit(**/.env.test)",
-      "Read(**/.env.prod)",
-      "Edit(**/.env.prod)",
-      "Read(**/.env.production)",
-      "Edit(**/.env.production)",
-      "Read(./secrets/**)",
+      "Read(~/**/.env)",
+      "Edit(~/**/.env)",
+      "Read(~/**/.env.local)",
+      "Edit(~/**/.env.local)",
+      "Read(~/**/.env.staging)",
+      "Edit(~/**/.env.staging)",
+      "Read(~/**/.env.test)",
+      "Edit(~/**/.env.test)",
+      "Read(~/**/.env.prod)",
+      "Edit(~/**/.env.prod)",
+      "Read(~/**/.env.production)",
+      "Edit(~/**/.env.production)",
+      "Read(~/**/secrets/**)",
       "Read(~/.config/db-envs/**)",
       "Edit(~/.config/db-envs/**)"
     ],
     "defaultMode": "auto"
   },
-  "model": "fable",
-  "deniedMcpServers": [
-    {
-      "serverUrl": "https://mcp.notion.com/*"
-    }
-  ],
+  "model": "fable[1m]",
   "hooks": {
     "PostToolUse": [
       {
@@ -104,14 +99,14 @@
     "bitwarden-security-engineer@bitwarden-marketplace": false,
     "bitwarden-software-engineer@bitwarden-marketplace": false,
     "bitwarden-tech-lead@bitwarden-marketplace": false,
-    "claude-retrospective@bitwarden-marketplace": true,
+    "claude-retrospective@bitwarden-marketplace": false,
     "figma@claude-plugins-official": false,
-    "gopls-lsp@claude-plugins-official": true,
-    "linear@claude-plugins-official": false,
-    "ralph-loop@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": false,
+    "linear@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": false,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
     "mattpocock-skills@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
@@ -123,11 +118,49 @@
     }
   },
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "high"
+    }
+  },
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
   "theme": "dark",
   "autoCompactEnabled": false,
   "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "Bash(git push:* --force*) in actualbudget/actual — force-push to shared/protected branches (master, release)",
+      "gh pr comment / gh pr review / gh api *#/comments on actualbudget/actual pull requests — repo convention (review-actual-pr skill) is offline-only review, never posting to the PR thread"
+    ],
+    "environment": [
+      "### Org-wide",
+      "**Organization**: None configured",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: PUBLIC — actualbudget/actual (origin). The fork zannis/actual is also public (GitHub forks of public repos are always public).",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: None configured",
+      "**Default / protected branches**: master (default), release — both protected; rulesets active: `release branch`, `tag create protections`, `tag delete protections`",
+      "**CI/CD deploy targets**: None configured",
+      "**Network posture**: None configured",
+      "**Source control**: origin (github.com/actualbudget/actual, public, upstream) and fork (github.com/zannis/actual, push target for this user's contributions) — no additional orgs configured",
+      "**Trusted internal domains**: None configured",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: None configured",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: any file or store holding personal data, confidential business data, credentials, regulated data, or similarly sensitive material; preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar. Note: packages/sync-server/src/app-secrets.js, packages/sync-server/src/secrets.test.js, and the secret-table/nordigen-secrets migrations under packages/sync-server/migrations/ handle credential material — treat as sensitive.",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment (hyphen/underscore/dot-delimited — e.g. matches `prod-db`, not `producer`)",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development — contributing to actualbudget/actual (open-source personal finance app), routine work under this repo (fetch/branch/commit/push to the zannis/actual fork, PR against actualbudget/actual upstream)",
+      "**Trusted repo**: /Users/zannis/dev/actual (actualbudget/actual, public — origin upstream; zannis/actual, public — fork used for pushes). Public repo: only this repo's own work belongs there; content ported from other checkouts or first read outside this session is not its own work. Secrets and sensitive data are never cleared into either remote by visibility alone.",
+      "**Org-specific CLIs**: None configured",
+      "routine under actualbudget/actual and zannis/actual (this repo's remotes) — PR titles/commit messages must carry the `[AI]` prefix per .github/agents/pr-and-commit-rules.md; PR template must be left blank per repo convention"
+    ]
+  },
   "voiceEnabled": true
 }

@@ -37,6 +37,7 @@
 Context is re-read on every turn, so progress chatter is paid for hundreds of times.
 Suppress output that carries no information; never suppress output you need to read.
 
+- Never `cd` inside a Bash command; always pass absolute paths to files and directories (a `cd` + relative path defeats the Read() deny-rule checker and triggers a permission prompt)
 - `git`: pass `-q` to `fetch` `clone` `checkout` `switch` `add` `commit` `push` `merge`
   `worktree add` `stash`. Never to `diff` `log` `show` `status` — those *are* the answer.
 - `cargo -q`, `pnpm --silent`, `npm --silent`, `curl -sS`. For `gh`, use
