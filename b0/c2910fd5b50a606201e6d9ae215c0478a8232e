@@ -1,0 +1,21 @@
+.claude/skills/pr-review/SKILL.md
+  s_135b141e55ac3c::t_a4f38c340eb4d2 1-150
+.gitignore
+  s_135b141e55ac3c::t_e531acf927d30a 12-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b0c2910fd5b50a606201e6d9ae215c0478a8232e",
+  "prompts": {},
+  "sessions": {
+    "s_135b141e55ac3c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b2563a0-8184-40c7-83c2-e3b5d514928a",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "zannis <zkalampoukis@gmail.com>"
+    }
+  }
+}
